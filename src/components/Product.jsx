@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { add } from '../store/cartSlice';
 import { getProducts } from '../store/productSlice';
+import StatusCode from '../utils/StatusCode';
 import '../App.css';
 
 const Product = () => {
@@ -26,7 +27,7 @@ const Product = () => {
         dispatch(add(product));
     }
 
-    if (status === 'loading') {
+    if (status === StatusCode.LOADING) {
         return <div className="loader">
             <div>
                 <div className="loader-circle"></div>
@@ -35,7 +36,7 @@ const Product = () => {
         </div>
     }
 
-    if (status === 'error') {
+    if (status === StatusCode.ERROR) {
         return <div id="container">
             <p id="text">404 ERROR</p>
             <p id="shadow">
